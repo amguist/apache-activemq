@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.neoworkz.messaging</groupId>
+    <artifactId>apache-activemq</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <name>Neoworkz :: Apache ActiveMQ</name>
+    <description>
+        Neoworkz version of ActiveMQ which provides the ability of being able to not have everything deployed
+        such as those optional, extra, and camel jars thus reducing the number of open files descriptors that
+        will be initially running as part of that within any given ActiveMQ instance.
+    </description>
+    <inceptionYear>2018</inceptionYear>
+
+    <scm>
+        <connection>scm:git:</connection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <plugin.maven.release.version>2.5</plugin.maven.release.version>
+        <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>internal-repository</id>
+            <name>Neoworkz</name>
+            <url>http://cloud.neoworkz.org:9090/repository/Neoworkz/</url>
+        </repository>
+        <snapshotRepository>
+            <id>internal-repository</id>
+            <name>Snapshots</name>
+            <url>http://cloud.neoworkz.org:9090/repository/Snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5</version>
+                <executions>
+                    <execution>
+                        <id>create-distribution</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>tar.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${plugin.maven.release.version}</version>
+                <configuration>
+                    <localCheckout>true</localCheckout>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
