@@ -4,7 +4,7 @@
 
     <groupId>org.neoworkz.messaging</groupId>
     <artifactId>apache-activemq</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -33,11 +33,6 @@
             <name>Neoworkz Internal</name>
             <url>http://cloud.neoworkz.org:9090/repository/Neoworkz/</url>
         </repository>
-        <snapshotRepository>
-            <id>internal-repository</id>
-            <name>Snapshots</name>
-            <url>http://cloud.neoworkz.org:9090/repository/Snapshots/</url>
-        </snapshotRepository>
     </distributionManagement>
 
     <build>
